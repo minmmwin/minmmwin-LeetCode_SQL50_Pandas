@@ -1,4 +1,4 @@
-									*** DESCRIPTION ***
+							*** DESCRIPTION ***
 Table: Customer
 
 +-------------+---------+
@@ -44,7 +44,7 @@ Output:
 | Zack |
 +------+
 
-									*** SOLUTION ***
+							*** SOLUTION ***
 
 Option 1:
 
