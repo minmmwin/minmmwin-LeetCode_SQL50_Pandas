@@ -1,4 +1,4 @@
-DESCRIPTION:
+									*** DESCRIPTION ***
 Table: Customer
 
 +-------------+---------+
@@ -44,21 +44,23 @@ Output:
 | Zack |
 +------+
 
-Pandas SOLUTION 1:
+									*** SOLUTION ***
+
+Option 1:
 
 import pandas as pd
 
 def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(customer['name'].loc[(customer['referee_id'].isna()) | (customer['referee_id'] != 2)])
 
-Pandas SOLUTION 2:
+Option 2:
 
 import pandas as pd
 
 def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
     return customer.loc[(customer['referee_id'].isna()) | (customer['referee_id'] != 2), ['name']]
 
-Pandas SOLUTION 3:
+Option 3:
 
 import pandas as pd
 
