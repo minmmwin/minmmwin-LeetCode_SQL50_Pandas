@@ -1,4 +1,4 @@
-								*** DESCRIPTION ***
+							*** DESCRIPTION ***
 Table: Views
 
 +---------------+---------+
@@ -45,7 +45,7 @@ Output:
 | 7    |
 +------+
 
-								*** SOLUTION ***
+							*** SOLUTION ***
 
 Option 1:
 
