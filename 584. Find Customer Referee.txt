@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 Table: Customer
 
 +-------------+---------+
@@ -44,26 +44,27 @@ Output:
 | Zack |
 +------+
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
 Option 1:
+# Using loc, select a dataframe where 'referee_id' is null using isna() or 'referee_id'] != 2
 
 import pandas as pd
-
 def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(customer['name'].loc[(customer['referee_id'].isna()) | (customer['referee_id'] != 2)])
 
 Option 2:
+# Using loc, select a dataframe where 'referee_id' is null using isna() or 'referee_id'] != 2
 
 import pandas as pd
-
 def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
     return customer.loc[(customer['referee_id'].isna()) | (customer['referee_id'] != 2), ['name']]
 
 Option 3:
+# Select a dataframe where 'referee_id' is null using isna() or 'referee_id'] != 2
+# Create a new dataframe with 'name' coulmn
 
 import pandas as pd
-
 def find_customer_referee(customer: pd.DataFrame) -> pd.DataFrame:
     df = customer[(customer['referee_id'].isna()) | (customer['referee_id'] != 2)]
     df =  df[['name']]
