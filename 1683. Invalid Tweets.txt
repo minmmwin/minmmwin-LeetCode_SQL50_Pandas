@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 Table: Tweets
 
 +----------------+---------+
@@ -40,23 +40,22 @@ Explanation:
 Tweet 1 has length = 11. It is a valid tweet.
 Tweet 2 has length = 33. It is an invalid tweet.
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
+Option 1:
 # Using loc, select a dataframe of the desired column('tweet_id') with a condition tweets['content'].str.len() > 15
 # Use str.len() to check the lenght of each string the Series
 
 import pandas as pd
-
 def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
     return tweets.loc[tweets['content'].str.len() > 15, ['tweet_id']]
 
-Pandas SOLUTION 2:
-
+Option 2:
 # Using loc, select the desired column('tweet_id') with a condition tweets['content'].str.len() > 15
 # Use str.len() to check the lenght of each string the Series
 # Create a new dataframe using []
-import pandas as pd
 
+import pandas as pd
 def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
     df = tweets[tweets['content'].str.len() > 15]
     return df[['tweet_id']]
