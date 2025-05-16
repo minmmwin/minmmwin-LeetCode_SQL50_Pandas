@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 
 Table: World
 
@@ -48,33 +48,29 @@ Output:
 | Algeria     | 37100000   | 2381741 |
 +-------------+------------+---------+
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
 Option 1:
-
-# Using loc, select a dataframe for the desired columns ('name', 'population', 'area') with conditions (world['area'] >= 3000000) | (world['population'] >= 25000000)
+# Using loc, select a dataframe for the desired columns ('name', 'population', 'area') where 'area' >= 3000000) or 
+'population' >= 25000000
 
 import pandas as pd
-
 def big_countries(world: pd.DataFrame) -> pd.DataFrame:
     return world[['name', 'population', 'area']].loc[(world['area'] >= 3000000) | (world['population'] >= 25000000)]
 
 Option 2:
-
-# Using loc, select a dataframe for the desired columns ('name', 'population', 'area') with conditions (world['area'] >= 3000000) | (world['population'] >= 25000000)
+# Using loc, select a dataframe for the desired columns ('name', 'population', 'area') where 'area' >= 3000000) or 
+'population' >= 25000000
 
 import pandas as pd
-
 def big_countries(world: pd.DataFrame) -> pd.DataFrame:
     return world.loc[(world['area'] >= 3000000) | (world['population'] >= 25000000), ['name', 'population', 'area']]
 
 Option 3:
-
-# Using loc, select the dataframe with conditions (world['area'] >= 3000000) | (world['population'] >= 25000000)
+# Using loc, select the dataframe where 'area' >= 3000000) or 'population' >= 25000000
 # Create a new dataframe using [] for the selected columns
 
 import pandas as pd
-
 def big_countries(world: pd.DataFrame) -> pd.DataFrame:
     df = world.loc[(world['area'] >= 3000000) | (world['population'] >= 25000000)]
     df = df[['name', 'population', 'area']]
