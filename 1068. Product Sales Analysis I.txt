@@ -1,4 +1,4 @@
-DESCRIPTION:
+							*** DESCRIPTION ***
 Table: Sales
 
 +-------------+-------+
@@ -68,28 +68,38 @@ From sale_id = 1, we can conclude that Nokia was sold for 5000 in the year 2008.
 From sale_id = 2, we can conclude that Nokia was sold for 5000 in the year 2009.
 From sale_id = 7, we can conclude that Apple was sold for 9000 in the year 2011.
 
-Pandas SOLUTION 1:
+							*** SOLUTION ***
+
+Option 1:
+
+# Using merge(), 'inner' join with a key 'product_id'
 
 import pandas as pd
 
 def sales_analysis(sales: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
-    product_sale = product.set_index('product_id').join(sales.set_index('product_id'), how = 'inner')
-    return product_sale[['product_name', 'year', 'price']]
+    df = pd.merge(product, sales, how = 'inner', on='product_id')
+    return df[['product_name', 'year', 'price']]
+
+
+Option 2:
+
+# Using set_index() and 'inner' join() 
+
+import pandas as pd
+
+def sales_analysis(sales: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
+    df = product.set_index('product_id').join(sales.set_index('product_id'), how = 'inner')
+    return df[['product_name', 'year', 'price']]
     
 
-Pandas SOLUTION 2:
+
+Option 3:
+
+# Using left.merge(right) with 'product_id' key
 
 import pandas as pd
 
 def sales_analysis(sales: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
-    product_sale = pd.merge(product, sales, how = 'inner', on='product_id')
-    return product_sale[['product_name', 'year', 'price']]
-
-Pandas SOLUTION 3:
-
-import pandas as pd
-
-def sales_analysis(sales: pd.DataFrame, product: pd.DataFrame) -> pd.DataFrame:
-    product_sale = product.merge(sales, how = 'inner', on='product_id')
-    return product_sale[['product_name', 'year', 'price']]
+    df = product.merge(sales, how = 'inner', on='product_id')
+    return df[['product_name', 'year', 'price']]
     

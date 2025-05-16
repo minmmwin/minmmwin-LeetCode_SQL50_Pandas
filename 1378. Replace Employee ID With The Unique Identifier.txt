@@ -1,4 +1,5 @@
-DESCRIPTION:
+							*** DESCRIPTION ***
+
 Table: Employees
 
 +---------------+---------+
@@ -68,18 +69,25 @@ The unique ID of Meir is 2.
 The unique ID of Winston is 3.
 The unique ID of Jonathan is 1.
 
-Pandas SOLUTION 1:
+							*** SOLUTION ***
+
+Option 1: 
+
+# Using merge() and 'left' join method 
 
 import pandas as pd
 
 def replace_employee_id(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> pd.DataFrame:
-    merged_employee = pd.merge(employees, employee_uni, how = 'left', on='id')
-    return merged_employee[['unique_id', 'name']]
+    df = pd.merge(employees, employee_uni, how = 'left', on='id')
+    return df[['unique_id', 'name']]
 
-Pandas SOLUTION 2:
+
+Option 2:
+
+# Using set_index() and join()
 
 import pandas as pd
 
 def replace_employee_id(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> pd.DataFrame:
-    merged_employee =  employees.set_index('id').join(employee_uni.set_index('id'))
-    return merged_employee[['unique_id', 'name']]
+    df =  employees.set_index('id').join(employee_uni.set_index('id'))
+    return df[['unique_id', 'name']]

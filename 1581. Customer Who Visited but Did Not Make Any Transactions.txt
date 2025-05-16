@@ -1,4 +1,5 @@
-DESCRIPTION:
+							*** DESCRIPTION ***
+
 Table: Visits
 
 +-------------+---------+
@@ -73,26 +74,36 @@ Customer with id = 54 visited the mall three times. During 2 visits they did not
 Customer with id = 96 visited the mall once and did not make any transactions.
 As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. Also, user 54 visited the mall twice and did not make any transactions.
 
-Pandas SOLUTION 1:
+							*** SOLUTION ***
+
+Option 1:
+
+# Join two dataframes using merge() and'left' join
+# Select a dataframe with a column 'customer_id' where 'transaction_id' is null using isna()
+# Add 'count_no_trans' column to df using groupby and transform() with 'count' func
 
 import pandas as pd
 
 def find_customers(visits: pd.DataFrame, transactions: pd.DataFrame) -> pd.DataFrame:
-    visit_transaction = pd.merge(visits, transactions, how = 'outer', on='visit_id')
-    df = visit_transaction.loc[visit_transaction['transaction_id'].isna(), ['customer_id']]
+    df = visits.merge(transactions, how = 'left', on = 'visit_id')
+    df = df.loc[df['transaction_id'].isna(), ['customer_id']]
     df['count_no_trans'] = df.groupby(['customer_id'])['customer_id'].transform('count')
     return df.drop_duplicates()
 
-Pandas SOLUTION 2:
+
+Option 2:
+
+# Join two dataframes using merge() and'left' join
+# Select a dataframe with a column 'customer_id' where 'transaction_id' is null using isna()
+# Create a dataframe with count on 'customer_id' using df.value_counts() and rename the column using rename()
+# Insert 'customer_id' column of indices at position 0 
 
 import pandas as pd
 
 def find_customers(visits: pd.DataFrame, transactions: pd.DataFrame) -> pd.DataFrame:
-    visit_transaction = pd.merge(visits, transactions, how = 'outer', on='visit_id')
-    df = visit_transaction.loc[visit_transaction['transaction_id'].isna(), ['customer_id']]
-    df_counts = pd.DataFrame(df.value_counts())
-    df_counts.insert(0, 'customer_id', df_counts.index)
-    df = df_counts.rename(columns={'count': 'count_no_trans'})
-    df = df.sort_values(by=['count_no_trans'])
+    df = visits.merge(transactions, how = 'left', on = 'visit_id')
+    df = df.loc[df['transaction_id'].isna(), 'customer_id']
+    df = pd.DataFrame(df.value_counts()).rename(columns={'count': 'count_no_trans'})
+    df.insert(0, 'customer_id', df.index)
     return df
 
