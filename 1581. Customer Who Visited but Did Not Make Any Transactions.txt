@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 
 Table: Visits
 
@@ -74,7 +74,7 @@ Customer with id = 54 visited the mall three times. During 2 visits they did not
 Customer with id = 96 visited the mall once and did not make any transactions.
 As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. Also, user 54 visited the mall twice and did not make any transactions.
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
 Option 1:
 
@@ -83,7 +83,6 @@ Option 1:
 # Add 'count_no_trans' column to df using groupby and transform() with 'count' func
 
 import pandas as pd
-
 def find_customers(visits: pd.DataFrame, transactions: pd.DataFrame) -> pd.DataFrame:
     df = visits.merge(transactions, how = 'left', on = 'visit_id')
     df = df.loc[df['transaction_id'].isna(), ['customer_id']]
@@ -99,7 +98,6 @@ Option 2:
 # Insert 'customer_id' column of indices at position 0 
 
 import pandas as pd
-
 def find_customers(visits: pd.DataFrame, transactions: pd.DataFrame) -> pd.DataFrame:
     df = visits.merge(transactions, how = 'left', on = 'visit_id')
     df = df.loc[df['transaction_id'].isna(), 'customer_id']
