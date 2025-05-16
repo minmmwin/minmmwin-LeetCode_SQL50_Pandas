@@ -72,7 +72,7 @@ From sale_id = 7, we can conclude that Apple was sold for 9000 in the year 2011.
 
 Option 1:
 
-# Using merge(), 'inner' join with a key 'product_id'
+# Using merge(), 'inner' join with 'product_id' key
 
 import pandas as pd
 
