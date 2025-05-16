@@ -72,7 +72,6 @@ The unique ID of Jonathan is 1.
 						*** SOLUTION ***
 
 Option 1: 
-
 # Using merge() and 'left' join method
 
 import pandas as pd
@@ -82,7 +81,6 @@ def replace_employee_id(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> 
 
 
 Option 2:
-
 # Using set_index() and join()
 
 import pandas as pd
