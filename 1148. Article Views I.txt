@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 Table: Views
 
 +---------------+---------+
@@ -45,28 +45,24 @@ Output:
 | 7    |
 +------+
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
 Option 1:
-
 # Using loc, select a dataframe for the desired 'author_id' column with a condition (views['author_id'] == views['viewer_id'])
 # Rename the column using rename()
 # Remove duplicate rows using drop_duplicates()
 # Sort 'id' column using sort_values()
 
 import pandas as pd
-
 def article_views(views: pd.DataFrame) -> pd.DataFrame:
     return views.loc[views['author_id'] == views['viewer_id'], ['author_id']].rename({'author_id' : 'id'}, axis = 1).drop_duplicates().sort_values(by='id', ascending=True)
 
 
 Option 2:
-
 # Usinh loc, create a new dataframe for the desired 'author_id' column with a condition (views['author_id'] == views['viewer_id'])
 # Follow the same steps on this df as in Option 1
 
 import pandas as pd
-
 def article_views(views: pd.DataFrame) -> pd.DataFrame:
     df = views[['author_id']].loc[views['author_id'] == views['viewer_id']]
     df = df.rename(columns = {'author_id' : 'id'}).drop_duplicates().sort_values(by=['id'])
