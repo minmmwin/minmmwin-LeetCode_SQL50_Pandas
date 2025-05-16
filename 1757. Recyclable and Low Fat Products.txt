@@ -1,4 +1,4 @@
-							*** DESCRIPTION ***
+						*** DESCRIPTION ***
 Table: Products
 
 +-------------+---------+
@@ -43,24 +43,20 @@ Output:
 +-------------+
 Explanation: Only products 1 and 3 are both low fat and recyclable.
 
-							*** SOLUTION ***
+						*** SOLUTION ***
 
 Option 1:
-
-# Using loc, select a dataframe for the desired 'product_id' column with a condition ((products['low_fats'] == 'Y') & (products['recyclable'] == 'Y'))
+# Using loc, select a dataframe for the desired 'product_id' column where 'low_fats' == 'Y' & 'recyclable'] == 'Y'
 
 import pandas as pd
-
 def find_products(products: pd.DataFrame) -> pd.DataFrame:
     return products.loc[(products['low_fats'] == 'Y') & (products['recyclable'] == 'Y') , ['product_id']]
 
 Option 2:
-
-# Using loc, select the desired 'product_id' column with a condition ((products['low_fats'] == 'Y') & (products['recyclable'] == 'Y'))
-# Create a new dataframe using pd.DataFrame() of the 'product_id' column
+# Using loc, select the desired 'product_id' column where 'low_fats' == 'Y' & 'recyclable'] == 'Y'
+# Create a new dataframe using pd.DataFrame() with 'product_id' column
 
 import pandas as pd
-
 def find_products(products: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(products['product_id'].loc[(products['low_fats'] == 'Y') & (products['recyclable'] == 'Y')])
         
