@@ -77,7 +77,6 @@ As we can see, users with IDs 30 and 96 visited the mall one time without making
 						*** SOLUTION ***
 
 Option 1:
-
 # Join two dataframes using merge() and'left' join
 # Select a dataframe with a column 'customer_id' where 'transaction_id' is null using isna()
 # Add 'count_no_trans' column to df using groupby and transform() with 'count' func
@@ -91,7 +90,6 @@ def find_customers(visits: pd.DataFrame, transactions: pd.DataFrame) -> pd.DataF
 
 
 Option 2:
-
 # Join two dataframes using merge() and'left' join
 # Select a dataframe with a column 'customer_id' where 'transaction_id' is null using isna()
 # Create a dataframe with count on 'customer_id' using df.value_counts() and rename the column using rename()
